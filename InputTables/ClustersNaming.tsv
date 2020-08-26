@@ -1,0 +1,60 @@
+Number	celltype
+0	Pharyngeal mesoderm
+1	Caudal mesoderm
+2	Early cardiomyocytes
+3	Caudal epiblast
+4	Pharyngeal mesoderm
+5	Differentiated somite
+6	Early mesoderm
+7	Cardiac mesoderm
+8	Somite/Sclerotome
+9	Caudal mesoderm
+10	Differentiation front
+11	Rostral neuroectoderm
+12	Primitive streak
+13	NMPs
+14	Notochord
+15	Differentiated somite
+16	Early mesoderm
+17	Forebrain/Midbrain/Hindbrain/NeuralCrest
+18	NMPs
+19	Gut
+20	Spinal cord
+21	Forebrain/Midbrain/Hindbrain/NeuralCrest
+22	Intermediate mesoderm
+23	Forebrain/Midbrain/Hindbrain/NeuralCrest
+24	Intermediate mesoderm
+25	Intermediate mesoderm
+26	Notochord
+27	Early mesoderm
+28	Differentiated somite
+29	NMPs
+30	Primitive streak
+31	NMPs
+32	Hindgut
+33	Primitive streak
+34	Definitive endoderm
+35	NMPs (mesoderm)
+36	Foregut
+37	Somite/Sclerotome
+38	Early mesoderm
+39	NMPs
+40	Gut/visceral endoderm
+41	Endothelium
+42	Hematoendothelial progenitors
+43	Nascent mesoderm
+44	Epiblast
+45	Endothelium
+46	Oral ectoderm
+47	Intermediate mesoderm
+48	Surface ectoderm
+49	Caudal epiblast
+50	Anterior primitive streak
+51	Cardiomyocytes
+52	Anterior primitive streak
+53	Epiblast
+54	Spinal cord
+55	Spinal cord
+56	Node
+57	Gut
+58	Differentiated neurons

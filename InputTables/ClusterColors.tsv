@@ -1,0 +1,42 @@
+transferred_identity	ab_initio_identity	color
+Erythroid3	NA	#c051ff
+Erythroid2	NA	#cd51ff
+Erythroid1	NA	#f25dfe
+Blood progenitors 2	NA	#e851ff
+Blood progenitors 1	NA	#f25dfe
+Haematoendothelial progenitors	Hematoendothelial progenitors	#ff6efd
+Endothelium	Endothelium	#ff5075
+Allantois	NA	#ae6f8d
+Mesenchyme	Early cardiomyocytes	#ee5151
+Cardiomyocytes	Cardiomyocytes	#ff0000
+Pharyngeal mesoderm	Pharyngeal mesoderm	#f8e16c
+Mixed mesoderm	Cardiac mesoderm	#df8888
+Nascent mesoderm	Nascent mesoderm	#d9b2b2
+Paraxial mesoderm	Differentiated somite	#f7875b
+Somitic mesoderm	Early mesoderm	#cc5252
+NA	Differentiation front	#e1694c
+NA	Somite/Sclerotome	#8d6f5f
+Intermediate mesoderm	Intermediate mesoderm	#bc9962
+Caudal Mesoderm	Caudal mesoderm	#e4ace3
+NMP	NMPs	#427aa6
+NA	NMPs (mesoderm)	#af5c65
+Caudal epiblast	Caudal epiblast	#7cb1c0
+Caudal neurectoderm	NA	#9597fb
+Neural crest	NA	#bd9cff
+Spinal cord	Spinal cord	#609fd1
+Forebrain/Midbrain/Hindbrain	Forebrain/Midbrain/Hindbrain/NeuralCrest	#86d0ec
+NA	Differentiated neurons	#1aa6ff
+Surface ectoderm	Surface ectoderm	#15f0c1
+NA	Oral ectoderm	#29d99d
+Rostral neurectoderm	Rostral neuroectoderm	#45ebec
+Epiblast	Epiblast	#cdcdcd
+PGC	NA	#000002
+Primitive Streak	Primitive streak	#858585
+Anterior Primitive Streak	Anterior primitive streak	#cadebc
+Def. endoderm	Definitive endoderm	#8ea67c
+Notochord	Notochord	#217346
+NA	Node	#dbe789
+Visceral endoderm	Gut/visceral endoderm	#c3c45c
+Gut	Gut	#7ceb52
+NA	Hindgut	#b0f777
+NA	Foregut	#77f7a1

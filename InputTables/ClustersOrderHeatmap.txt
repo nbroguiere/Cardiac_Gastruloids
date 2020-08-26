@@ -1,0 +1,32 @@
+Hematoendothelial progenitors
+Endothelium
+Early cardiomyocytes
+Cardiomyocytes
+Pharyngeal mesoderm
+Cardiac mesoderm
+Nascent mesoderm
+Paraxial mesoderm
+Differentiation front
+Differentiated somite
+Somite/Sclerotome
+Intermediate mesoderm
+Caudal mesoderm
+NMP/Paraxial mesoderm
+NMP
+Caudal epiblast
+Spinal cord
+Differentiated neurons
+Forebrain/Midbrain/Hindbrain/NeuralCrest
+Surface ectoderm
+Oral ectoderm
+Rostral neuroectoderm
+Epiblast
+Primitive streak
+Anterior primitive streak
+Definitive endoderm
+Node
+Notochord
+Gut
+Hindgut
+Foregut
+Gut/visceral endoderm
