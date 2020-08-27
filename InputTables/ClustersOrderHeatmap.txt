@@ -5,14 +5,14 @@ Cardiomyocytes
 Pharyngeal mesoderm
 Cardiac mesoderm
 Nascent mesoderm
-Paraxial mesoderm
+Early mesoderm
 Differentiation front
 Differentiated somite
 Somite/Sclerotome
 Intermediate mesoderm
 Caudal mesoderm
-NMP/Paraxial mesoderm
-NMP
+NMPs (mesoderm)
+NMPs
 Caudal epiblast
 Spinal cord
 Differentiated neurons

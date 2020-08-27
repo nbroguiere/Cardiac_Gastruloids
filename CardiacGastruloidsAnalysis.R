@@ -8,7 +8,7 @@ library(edgeR)
 library(ggrepel)
 library(reticulate)
 library(Rmagic)
-library(phateR)
+#library(phateR)
 library(scmap)
 library(scater)
 library(harmony)
@@ -18,10 +18,10 @@ library(uwot)
 library(viridis)
 library(DoubletFinder)
 
-dataset.folder <- "D:/Raw_data_LSCB/scRNAseqGiuliana"
-atlas.directory <- "D:/scRNAseq_Atlases/Atlas_E-MTAB-6967.processed.1"
-analysis.folder <- "C:/Users/nicki/Documents/PostDoc_LSCB/20-05-13_Cardiac_Gastruloids/github"
-classifier.folder <- "C:/Users/nicki/Documents/PostDoc_LSCB/20-05-13_Cardiac_Gastruloids/github/scmap_pijuansala_classifier"
+dataset.folder <- "SET_PATH_TO_RAW_DATA"
+atlas.directory <- "SET_PATH_TO_ATLAS"
+analysis.folder <- "SET_PATH"
+classifier.folder <- "SET_PATH/scmap_pijuansala_classifier"
 Days_to_analyze <- c(4,5,6,7)
 Batches_to_analyze <- c(1,2,3,4,5)
 
@@ -195,7 +195,7 @@ atlas <- AddMetaData(object = atlas,metadata = atlas.metadata$sequencing.batch,c
 atlas <- AddMetaData(object = atlas,metadata = colSums(atlas[grep(pattern = "^mt-", x = rownames(atlas), value = T), ])/colSums(atlas)*100, col.name = "percent.mito")
 rm(atlas.data)
 
-# Define a subset excluding from the atlas "mixed_gastrulation", which is a mess, and "NA" cells. Also exclude extraembryonic tissue, not reproduced/studied in gastruloids.
+# Define a subset excluding from the atlas "mixed_gastrulation", and "NA" cells. Also exclude extraembryonic tissue, not reproduced/studied in gastruloids.
 Idents(atlas) <- atlas$stage
 atlas.subset <- subset(x = atlas, idents = c("mixed_gastrulation"), invert=T)
 Idents(atlas.subset) <- atlas.subset$celltype
@@ -303,8 +303,7 @@ gc()
 
 DimPlot(SO.align,pt.size=1,reduction = "harmony2",label=T,label.size = 8) + NoLegend()
 
-# For some reason, scmap fails dramatically. Probably trying to do some renormalization even though it shouldnt when using harmony coordinates. 
-# So just make it manually myself, based on same concept as scmap (nearest cluster centroid, this time in harmony-space): 
+# Do an identity transfer based on same concept as scmap (nearest cluster centroid), but this time in harmony-space to benefit from the alignment: 
 # Create classifier from atlas cells
 Idents(SO.align) <- SO.align$model
 cells.tmp <- WhichCells(SO.align,idents = "Embryo")
@@ -352,7 +351,7 @@ set.seed(seed)
 cells.use <- WhichCells(object = atlas.subset,downsample = 200) #colnames(atlas.subset) #sample(colnames(atlas.subset),1000)
 nn=300
 local_connectivity=1 # Tried 2 and was not so convincing. Should not be more than the local intrinsic dimension of the manifold.
-fast_sgd <- F # Should set it to false ultimately, to get reproducible results, but faster for early exploration.
+fast_sgd <- F # Should set it to FALSE ultimately, to get exactly reproducible results, but TRUE can be useful as it is faster for early exploration.
 umap_init <- "spectral" # "normlaplacian", "spectral" (with noise),  "random", "lvrandom" (Gaussian std 1e-4), "laplacian", or a matrix of initial coordinates.
 reduction.use <- "pca1"
 set.seed(seed)
@@ -832,7 +831,6 @@ FeaturePlot(SO,"highlight",sort.cell = F)
 dev.off()
 SO.tmp <- SO[,SO$louvain_clusters %in% clusters_keep]
 if(is.closeup){ # Run only if the aim is to redo the projection rather than keep the overal view
-  # Choose "phate" or "umap". 
   reduction.use <- "umap"
   SO.tmp <- FindVariableFeatures(SO.tmp)
   SO.tmp <- ScaleData(SO.tmp,features = VariableFeatures(SO.tmp))
@@ -841,14 +839,6 @@ if(is.closeup){ # Run only if the aim is to redo the projection rather than keep
   DimPlot(SO.tmp,reduction = "pca",dims = c(11,12)) 
   dims.use.closeup <- 1:12 # 1:12
   SO.tmp <- RunHarmony(SO.tmp,group.by.vars = "Replicate",dims.use = dims.use.closeup,nclust = 20)
-  # n.neighbors <- 75 # 50 # Try with phate rather than UMAP: not very convincing, do not keep. 
-  # n.epochs = 500 # 1000
-  # if(reduction.use=="umap"){ # umap
-  #   SO.tmp <- RunUMAP(SO.tmp,dims = dims.use.closeup,n.neighbors = n.neighbors,reduction = "harmony",min.dist = 5,spread = 15, n.epochs = n.epochs) # min dist 8 spread 15, v2 min 5 spread 15
-  # }else{
-  #   tmp <- phate(data = Embeddings(SO.tmp[["harmony"]]),knn = 10, t = 10, decay = 100, knn.dist.method = 'euclidean',mds.dist.method = 'euclidean')
-  #   SO.tmp[["phate"]] <- CreateDimReducObject(embeddings = 100*tmp$embedding, key = "PHATE_",assay = "RNA")
-  # }
   nn=50
   fast_sgd <- F # Should set it to false ultimately, to get exactly reproducible results, but faster for early exploration. 
   umap_init <- as.matrix(Embeddings(SO[,colnames(SO.tmp)][["umap"]]))  # Can be a keyword like "normlaplacian", "spectral" (with noise),  "random", "lvrandom" (Gaussian std 1e-4), "laplacian", or a matrix of initial coordinates. 
@@ -885,11 +875,6 @@ SO.tmp$Mesp1_Day5 <- Mesp1_tmp*(SO.tmp$stage=="Day5")
 SO.tmp$Mesp1_Day6 <- Mesp1_tmp*(SO.tmp$stage=="Day6")
 FeaturePlot(SO.tmp,c("Mesp1_Day4","Mesp1_Day5"),blend = T,pt.size = 2,sort=T)
 FeaturePlot(SO.tmp,c("Mesp1_Day4","Mesp1_Day5","Mesp1_Day6","Mesp1"),min.cutoff = c(0,0,0,0),max.cutoff = c(3,3,3,3),blend = F,pt.size = 2,sort=T)
-
-# Heart fields from Ivanovitch 2020
-FeaturePlot(SO.tmp,c("Tcf15","Meox1"),pt.size = 3,sort=T) # pSHF Ivanovitch
-FeaturePlot(SO.tmp,c("Cyp26a1","Alx1","Cer1","Sfrp1"),pt.size = 3,sort=T) # AHF Ivanovitch
-FeaturePlot(SO.tmp,c("Mef2c","Smarcd3","Rgs5","Nkx2-5"),pt.size = 3,sort=T) # FHF Ivanovitch
 
 # Main Heart field signatures
 SHF <- c("Tbx1", "Six2", "Six1")
@@ -1081,6 +1066,7 @@ tmp[cells.tmp,"cells.tmp"] <- "Highlighted_Cells"
 ggplot(tmp) + geom_point(aes(x=nFeature_RNA, y=percent.mito, color=cells.tmp))+scale_x_continuous(trans='log10')+scale_y_continuous(trans='log10')+scale_color_manual(values=c("Red", "Lightgrey"))+theme_light()
 ggplot(tmp) + geom_violin(aes(x=cells.tmp,y=nFeature_RNA,color=cells.tmp))+ggplot2::scale_colour_manual(values=c("Red","Darkgrey"))+theme_light()
 
+##### Aligned data export #####
 # # Export the combined datasets as a loom file:
 # library(reticulate)
 # seuratobject_ad <- Convert(from=SO.align, to="anndata", filename="SO.align_v4.h5ad")
