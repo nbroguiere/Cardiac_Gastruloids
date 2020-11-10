@@ -24,8 +24,8 @@ Caudal epiblast	Caudal epiblast	#7cb1c0
 Caudal neurectoderm	NA	#9597fb
 Neural crest	NA	#bd9cff
 Spinal cord	Spinal cord	#609fd1
-Forebrain/Midbrain/Hindbrain	Forebrain/Midbrain/Hindbrain/NeuralCrest	#86d0ec
-NA	Differentiated neurons	#1aa6ff
+Forebrain/Midbrain/Hindbrain	Radial glia-like/Neural crest	#86d0ec
+NA	Neuroblasts/Neurons	#1aa6ff
 Surface ectoderm	Surface ectoderm	#15f0c1
 NA	Oral ectoderm	#29d99d
 Rostral neurectoderm	Rostral neuroectoderm	#45ebec

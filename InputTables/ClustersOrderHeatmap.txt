@@ -15,8 +15,8 @@ NMPs (mesoderm)
 NMPs
 Caudal epiblast
 Spinal cord
-Differentiated neurons
-Forebrain/Midbrain/Hindbrain/NeuralCrest
+Neuroblasts/Neurons
+Radial glia-like/Neural crest
 Surface ectoderm
 Oral ectoderm
 Rostral neuroectoderm

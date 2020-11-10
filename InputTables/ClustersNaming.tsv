@@ -16,13 +16,13 @@ Number	celltype
 14	Notochord
 15	Differentiated somite
 16	Early mesoderm
-17	Forebrain/Midbrain/Hindbrain/NeuralCrest
+17	Radial glia-like/Neural crest
 18	NMPs
 19	Gut
 20	Spinal cord
-21	Forebrain/Midbrain/Hindbrain/NeuralCrest
+21	Radial glia-like/Neural crest
 22	Intermediate mesoderm
-23	Forebrain/Midbrain/Hindbrain/NeuralCrest
+23	Radial glia-like/Neural crest
 24	Intermediate mesoderm
 25	Intermediate mesoderm
 26	Notochord
@@ -57,4 +57,4 @@ Number	celltype
 55	Spinal cord
 56	Node
 57	Gut
-58	Differentiated neurons
+58	Neuroblasts/Neurons
